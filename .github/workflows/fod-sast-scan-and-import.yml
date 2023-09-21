@@ -20,8 +20,12 @@ jobs:
       
       - name: Setup Fortify tools
         uses: fortify-ps/github-action/setup@main
-        with:
-          fcli: dev_develop
+      - name: Display versions
+        run: |
+          echo "PATH: $PATH"
+          echo "INTERNAL_FCLI: $INTERNAL_FCLI"
+          echo "Internal fcli version: $($INTERNAL_FCLI -V)"
+          echo "User-specified fcli version: $(fcli -V)"
       - name: Package Code + Dependencies
         run: scancentral package $PACKAGE_OPTS -o package.zip
         env:
