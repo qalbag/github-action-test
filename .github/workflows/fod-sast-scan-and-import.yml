@@ -21,7 +21,7 @@ jobs:
       - name: Setup Fortify tools
         uses: fortify-ps/github-action/setup@main
         with:
-          fcli: dev_2.0.0-beta
+          fcli: dev_develop
       - name: Package Code + Dependencies
         run: scancentral package $PACKAGE_OPTS -o package.zip
         env:
