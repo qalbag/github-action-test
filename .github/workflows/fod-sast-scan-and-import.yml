@@ -19,7 +19,7 @@ jobs:
           java-version: 11
       
       - name: Setup Fortify tools
-        uses: fortify-ps/github-action/setup
+        uses: fortify-ps/github-action/setup@main
       - name: Package Code + Dependencies
         run: scancentral package $PACKAGE_OPTS -o package.zip
         env:
