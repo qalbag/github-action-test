@@ -21,9 +21,7 @@ jobs:
       - name: Setup Fortify tools
         uses: fortify-ps/github-action/setup@main
         with:
-          sc-client: 23.1.0
-          fod-uploader: 5.4.0
-          vuln-exporter: 2.0.3
+          fcli: dev_2.0.0-beta
       - name: Package Code + Dependencies
         run: scancentral package $PACKAGE_OPTS -o package.zip
         env:
