@@ -33,7 +33,7 @@ jobs:
         uses: fortify-ps/github-action/setup@main
         with:
           fcli: dev_develop
-          sc-client: 23.1.0
+          sc-client: 22.1.0
           vuln-exporter: 2.0.3
           fod-uploader: default
       - name: Display test 2 info
@@ -76,6 +76,11 @@ jobs:
           echo "FCLI_CMD version: $(${FCLI_CMD} -V)"
               
       - name: Package Code + Dependencies
-        run: scancentral package $PACKAGE_OPTS -o package.zip
+        uses: fortify-ps/github-action/package@main
         env:
           PACKAGE_OPTS: "-bt mvn"
+          
+      - name: Display ScanCentral Client version on PATH
+        continue-on-error: true
+        run: |
+          scancentral -version
