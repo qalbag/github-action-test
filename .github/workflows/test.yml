@@ -13,20 +13,17 @@ jobs:
       - name: Check Out Source Code
         uses: actions/checkout@v2
       
-      - name: Input test 1
-        uses: fortify-ps/github-action@main
+      - name: run-test 1
+        uses: fortify-ps/github-action/run@main
         with:
-          test: |
-            prop1:
-              subProp1: ${{ secrets.TEST_SECRET }}
-              subProp2: def
-            prop2:
-              sub2Prop1: xyz
-              
-      - name: Input test 2
-        uses: fortify-ps/github-action@main
-        with:
-          test: myapp --auto-req-attrs --ms "abc def"
+          cmd: echo ${env.T}
+        env:
+          T: Hello; ls -la
+          
+      - name: run-test 2
+        run: echo ${env.T}
+        env:
+          T: Hello; ls -la
               
   myjob:
     runs-on: ubuntu-latest
