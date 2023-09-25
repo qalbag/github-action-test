@@ -23,7 +23,7 @@ jobs:
         with:
           test: |
             prop1:
-              subProp1: abc
+              subProp1: {{ secrets.TEST_SECRET }}
               subProp2: def
             prop2:
               sub2Prop1: xyz
