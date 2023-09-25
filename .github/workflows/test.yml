@@ -16,12 +16,12 @@ jobs:
       - name: run-test 1
         uses: fortify-ps/github-action/run@main
         with:
-          cmd: echo ${env.T}
+          cmd: echo ${{env.T}}
         env:
           T: Hello; ls -la
           
       - name: run-test 2
-        run: echo ${env.T}
+        run: echo $T
         env:
           T: Hello; ls -la
               
