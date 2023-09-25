@@ -6,24 +6,23 @@ on:
     branches: [master]
 
 jobs:
-  input-test:
+  test:
     runs-on: ubuntu-latest
     steps:
       # Check out source code
       - name: Check Out Source Code
         uses: actions/checkout@v2
       
-      - name: run-test 1
-        uses: fortify-ps/github-action/run@main
-        with:
-          cmd: echo ${{env.T}}
+      - name: Run FoD SAST scan
+        uses: fortify-ps/github-action/fod-sast-scan@main
         env:
-          T: Hello; "ls -la"
-          
-      - name: run-test 2
-        run: echo $T
-        env:
-          T: Hello; "ls -la"
+          FOD_URL: ${{secrets.OSS_FOD_BASE_URL}}
+          FOD_TENANT: ${{secrets.OSS_FOD_TENANT}}
+          FOD_USER: ${{secrets.OSS_FOD_USER}}
+          FOD_PASSWORD: ${{secrets.OSS_FOD_PAT}}
+          FOD_RELEASE: EightBall:New-GitHub-Action
+          EXTRA_FOD_LOGIN_OPTS: --socket-timeout=1s
+          EXTRA_FOD_SAST_OPTS: --notes "These are notes from the GitHub Action"
               
   myjob:
     runs-on: ubuntu-latest
