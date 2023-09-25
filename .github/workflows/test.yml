@@ -13,7 +13,7 @@ jobs:
       - name: Check Out Source Code
         uses: actions/checkout@v2
       
-      - name: Input test
+      - name: Input test 1
         uses: fortify-ps/github-action@main
         with:
           test: |
@@ -22,6 +22,11 @@ jobs:
               subProp2: def
             prop2:
               sub2Prop1: xyz
+              
+      - name: Input test 2
+        uses: fortify-ps/github-action@main
+        with:
+          test: myapp --auto-req-attrs --ms "abc def"
               
   myjob:
     runs-on: ubuntu-latest
