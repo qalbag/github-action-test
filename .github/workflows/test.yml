@@ -18,12 +18,12 @@ jobs:
         with:
           cmd: echo ${{env.T}}
         env:
-          T: Hello; ls -la
+          T: Hello; "ls -la"
           
       - name: run-test 2
         run: echo $T
         env:
-          T: Hello; ls -la
+          T: Hello; "ls -la"
               
   myjob:
     runs-on: ubuntu-latest
