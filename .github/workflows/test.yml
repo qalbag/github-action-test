@@ -20,6 +20,14 @@ jobs:
       
       - name: Setup test 1
         uses: fortify-ps/github-action/setup@main
+        with:
+          test: |
+            prop1:
+              subProp1: abc
+              subProp2: def
+            prop2:
+              sub2Prop1: xyz
+              
       - name: Display test 1 info
         continue-on-error: true
         run: |
