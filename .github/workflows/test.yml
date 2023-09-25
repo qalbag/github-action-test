@@ -6,17 +6,30 @@ on:
     branches: [master]
 
 jobs:
-  myjob:
+  input-test:
     runs-on: ubuntu-latest
-
     steps:
       # Check out source code
       - name: Check Out Source Code
         uses: actions/checkout@v2
-      - name: Setup Java
-        uses: actions/setup-java@v1
+      
+      - name: Input test
+        uses: fortify-ps/github-action@main
         with:
-          java-version: 11
+          test: |
+            prop1:
+              subProp1: ${{ secrets.TEST_SECRET }}
+              subProp2: def
+            prop2:
+              sub2Prop1: xyz
+              
+  myjob:
+    runs-on: ubuntu-latest
+    if: never
+    steps:
+      # Check out source code
+      - name: Check Out Source Code
+        uses: actions/checkout@v2
       
       - name: Setup test 1
         uses: fortify-ps/github-action/setup@main
@@ -83,6 +96,11 @@ jobs:
           echo "Fcli version on path: $(fcli -V)"
           echo "FCLI_CMD version: $(${FCLI_CMD} -V)"
               
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      
       - name: Package Code + Dependencies
         uses: fortify-ps/github-action/package@main
         env:
