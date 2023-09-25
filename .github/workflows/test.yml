@@ -21,7 +21,7 @@ jobs:
           FOD_USER: ${{secrets.OSS_FOD_USER}}
           FOD_PASSWORD: ${{secrets.OSS_FOD_PAT}}
           FOD_RELEASE: EightBall:New-GitHub-Action
-          EXTRA_FOD_LOGIN_OPTS: --socket-timeout=1s
+          EXTRA_FOD_LOGIN_OPTS: --socket-timeout=60s
           EXTRA_FOD_SAST_OPTS: --notes "These are notes from the GitHub Action"
               
   myjob:
