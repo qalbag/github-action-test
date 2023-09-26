@@ -22,7 +22,16 @@ jobs:
           FOD_PASSWORD: ${{secrets.OSS_FOD_PAT}}
           FOD_RELEASE: EightBall:New-GitHub-Action
           EXTRA_FOD_LOGIN_OPTS: --socket-timeout=60s
-          EXTRA_FOD_SAST_OPTS: --notes "These are notes from the GitHub Action"
+          EXTRA_FOD_SAST_SCAN_OPTS: --notes "These are notes from the GitHub Action"
+          DO_EXPORT: true
+          
+      - name: Run SC-SAST SAST scan
+        uses: fortify-ps/github-action/sc-sast-scan@main
+        env:
+          SSC_URL: ${{secrets.SSC_UAT_URL}}
+          SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
+          SSC_APPVERSION: EightBall:github
+          SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
           DO_EXPORT: true
               
   myjob:
