@@ -32,7 +32,7 @@ jobs:
     steps:
       # Check out source code
       - name: Check Out Source Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Run SC-SAST SAST scan
         uses: fortify-ps/github-action@main
         with:
