@@ -33,7 +33,7 @@ jobs:
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
           SSC_APPVERSION: EightBall:github
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
-          SC_SAST_SENSOR_VERSION: 23.1
+          SC_SAST_SENSOR_VERSION: 23.1.0
           DO_EXPORT: true
               
   myjob:
