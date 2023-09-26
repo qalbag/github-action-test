@@ -7,7 +7,11 @@ on:
 
 jobs:
   fod-sast-scan:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       # Check out source code
       - name: Check Out Source Code
@@ -28,7 +32,11 @@ jobs:
           DO_EXPORT: true
           
   sc-sast-scan:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       # Check out source code
       - name: Check Out Source Code
