@@ -6,7 +6,7 @@ on:
     branches: [master]
 
 jobs:
-  test:
+  fod-sast-scan:
     runs-on: ubuntu-latest
     steps:
       # Check out source code
@@ -14,8 +14,9 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Run FoD SAST scan
-        if: false
-        uses: fortify-ps/github-action/fod-sast-scan@main
+        uses: fortify-ps/github-action@main
+        with:
+          sast: true
         env:
           FOD_URL: ${{secrets.OSS_FOD_BASE_URL}}
           FOD_TENANT: ${{secrets.OSS_FOD_TENANT}}
@@ -26,8 +27,16 @@ jobs:
           EXTRA_FOD_SAST_SCAN_OPTS: --notes "These are notes from the GitHub Action"
           DO_EXPORT: true
           
+  sc-sast-scan:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out source code
+      - name: Check Out Source Code
+        uses: actions/checkout@v2
       - name: Run SC-SAST SAST scan
-        uses: fortify-ps/github-action/sc-sast-scan@main
+        uses: fortify-ps/github-action@main
+        with:
+          sast: true
         env:
           SSC_URL: ${{secrets.SSC_UAT_URL}}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
