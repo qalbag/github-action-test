@@ -68,11 +68,11 @@ jobs:
         uses: fortify-ps/github-action/setup@main
         with:
           fcli: 1.3.1
-      - name: Setup fcli dev_github-action
+      - name: Setup latest fcli v1
         if: always()
         uses: fortify-ps/github-action/setup@main
         with:
-          fcli: dev_github-action    
+          fcli: v1    
                
   myjob:
     runs-on: ubuntu-latest
