@@ -73,7 +73,12 @@ jobs:
         uses: fortify-ps/github-action/setup@main
         with:
           fcli: v1    
-               
+  
+  test-defaults:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fortify-ps/github-action/internal/set-fod-var-defaults@main
+
   myjob:
     runs-on: ubuntu-latest
     if: false
