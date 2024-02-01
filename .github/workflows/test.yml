@@ -80,7 +80,8 @@ jobs:
         uses: rsenden/github-actionx/setup@main
         with:
           fcli: dev_develop
-      - run: |
+      - if: always()
+        run: |
           echo "PATH: $PATH"
           echo "FCLI_INSTALL_DIR: $FCLI_INSTALL_DIR"
           echo "FCLI_BIN_DIR: $FCLI_BIN_DIR"
@@ -90,7 +91,8 @@ jobs:
         uses: rsenden/github-actionx/setup@main
         with:
           fcli: action-default
-      - run: |
+      - if: always()
+        run: |
           echo "PATH: $PATH"
           echo "FCLI_INSTALL_DIR: $FCLI_INSTALL_DIR"
           echo "FCLI_BIN_DIR: $FCLI_BIN_DIR"
