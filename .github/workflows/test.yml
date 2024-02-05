@@ -101,6 +101,16 @@ jobs:
           echo "FCLI_INSTALL_DIR: $FCLI_INSTALL_DIR"
           echo "FCLI_BIN_DIR: $FCLI_BIN_DIR"
           echo "FCLI_CMD: $FCLI_CMD"
+      - name: Debricked CLI
+        uses: fortify/github-action/setup@feat-tool-definitions
+        with:
+          debricked-cli: latest
+          export-path: true
+      - name: Debricked CLI info
+        continue-on-error: true
+        run: |
+          echo "PATH: $PATH"
+          echo "DEBRICKED_CLI_CMD: $DEBRICKED_CLI_CMD"
   
   test-defaults:
     runs-on: ubuntu-latest
