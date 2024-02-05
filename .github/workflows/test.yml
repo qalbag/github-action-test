@@ -8,7 +8,7 @@ on:
 
 jobs:
   fod-sast-scan:
-    if: false
+#    if: false
     strategy:
       fail-fast: false
       # Prevent running multiple FoD scans on same release simultaneously
@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Run FoD SAST scan
-        uses: rsenden/github-actionx@main
+        uses: fortify/github-action@feat-tool-definitions
         with:
           sast-scan: true
         env:
@@ -47,7 +47,7 @@ jobs:
       - name: Check Out Source Code
         uses: actions/checkout@v4
       - name: Run SC-SAST SAST scan
-        uses: rsenden/github-actionx@main
+        uses: fortify/github-action@feat-tool-definitions
         with:
           sast-scan: true
         env:
@@ -77,11 +77,11 @@ jobs:
         with:
           fcli: v1
       - run: fcli -V
-      - name: Setup fcli dev_develop 
+      - name: Setup fcli 2.2.0 
         if: always()
         uses: rsenden/github-actionx/setup@main
         with:
-          fcli: dev_develop
+          fcli: 2.2.0
       - run: fcli -V
       - if: always()
         run: |
