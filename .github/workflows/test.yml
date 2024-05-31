@@ -8,7 +8,7 @@ on:
 
 jobs:
   fod-sast-scan:
-    if: false
+    if: true
     strategy:
       fail-fast: false
       # Prevent running multiple FoD scans on same release simultaneously
@@ -36,7 +36,7 @@ jobs:
           DO_EXPORT: true
           
   sc-sast-scan:
-    if: false
+    if: true
     strategy:
       fail-fast: false
       matrix:
