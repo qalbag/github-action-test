@@ -128,6 +128,10 @@ jobs:
       FOD_USER: ${{secrets.OSS_FOD_USER}}
       FOD_PASSWORD: ${{secrets.OSS_FOD_PAT}}
     steps:
+      - name: Setup fcli action-default
+        uses: fortify/github-action/setup@feat-1.3.0
+        with:
+          fcli: action-default
       - name: Login once
         uses: fortify/github-action/internal/fod-login@feat-1.3.0
       - name: Login again
