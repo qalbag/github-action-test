@@ -123,7 +123,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     env:
-      FOD_URL: ${{secrets.OSS_FOD_BASE_URL}}
+      FOD_URL: https://ams.fortify.com
       FOD_TENANT: ${{secrets.OSS_FOD_TENANT}}
       FOD_USER: ${{secrets.OSS_FOD_USER}}
       FOD_PASSWORD: ${{secrets.OSS_FOD_PAT}}
