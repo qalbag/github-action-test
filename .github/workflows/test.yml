@@ -33,7 +33,7 @@ jobs:
           EXTRA_FOD_SAST_SCAN_OPTS: --notes "These are notes from the GitHub Action"
           DO_EXPORT: true
           
-  sc-sast-scan:
+  ssc-scan:
     if: true
     strategy:
       fail-fast: false
@@ -44,16 +44,17 @@ jobs:
       # Check out source code
       - name: Check Out Source Code
         uses: actions/checkout@v4
-      - name: Run SC-SAST SAST scan
-        uses: fortify/github-action@feat-1.3.0
-        with:
-          sast-scan: true
+      - name: Run SC-SAST & Debricked scan
+        uses: fortify/github-action/ssc-scan@feat-1.3.0
         env:
           SSC_URL: ${{secrets.SSC_UAT_URL}}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
           SSC_APPVERSION: EightBall:github
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
+          DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}
           SC_SAST_SENSOR_VERSION: 23.1.0
+          DO_SC_SAST_SCAN: true
+          DO_DEBRICKED_SCAN: true
           DO_EXPORT: true
           
   ssc-debricked-scan:
