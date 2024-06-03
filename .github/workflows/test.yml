@@ -7,7 +7,7 @@ on:
     
 jobs:
   fod-sast-scan:
-    if: true
+    if: false
     strategy:
       fail-fast: false
       # Prevent running multiple FoD scans on same release simultaneously
@@ -52,13 +52,13 @@ jobs:
           SSC_APPVERSION: EightBall:github
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
           DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}
-          SC_SAST_SENSOR_VERSION: 23.1.0
+          SC_SAST_SENSOR_VERSION: 23.2.0
           DO_SC_SAST_SCAN: true
           DO_DEBRICKED_SCAN: true
           DO_EXPORT: true
           
   ssc-debricked-scan:
-    if: true
+    if: false
     strategy:
       fail-fast: false
       matrix:
@@ -75,7 +75,7 @@ jobs:
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
           SSC_APPVERSION: EightBall:github
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
-          SC_SAST_SENSOR_VERSION: 23.1.0
+          SC_SAST_SENSOR_VERSION: 23.2.0
           DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}
           DO_EXPORT: true
      
@@ -174,12 +174,18 @@ jobs:
         uses: fortify/github-action/setup@feat-1.3.0
         with:
           fcli: action-default
-      - name: Login once
+      - name: SC-SAST - Login once
         uses: fortify/github-action/internal/sc-sast-login@feat-1.3.0
-      - name: Login again
+      - name: SSC - Login once
+        uses: fortify/github-action/internal/ssc-login@feat-1.3.0
+      - name: SC-SAST - Login again
         uses: fortify/github-action/internal/sc-sast-login@feat-1.3.0
-      - name: Login once more
+      - name: SSC - Login again
+        uses: fortify/github-action/internal/ssc-login@feat-1.3.0
+      - name: SC-SAST - Login once more
         uses: fortify/github-action/internal/sc-sast-login@feat-1.3.0
+      - name: SSC - Login once more
+        uses: fortify/github-action/internal/ssc-login@feat-1.3.0
         
   test-ssc-login:
     strategy:
