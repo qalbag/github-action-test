@@ -47,7 +47,7 @@ jobs:
           SSC_URL: ${{secrets.SSC_UAT_URL}}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
           SSC_APPVERSION: EightBall:github
-          EXTRA_EXPORT_OPTS: --fs="Quick View"
+          EXTRA_EXPORT_OPTS: '--fs "Quick View"'
           
   sc-sast-and-debricked-scan:
     if: false
