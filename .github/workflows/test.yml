@@ -50,7 +50,7 @@ jobs:
           EXTRA_EXPORT_OPTS: --fs "Quick View"
           
   sc-sast-and-debricked-scan:
-    if: false
+    if: true
     strategy:
       fail-fast: false
       matrix:
@@ -76,7 +76,7 @@ jobs:
           DO_EXPORT: true
           
   debricked-only-scan:
-    if: false
+    if: true
     strategy:
       fail-fast: false
       matrix:
