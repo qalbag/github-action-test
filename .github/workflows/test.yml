@@ -45,7 +45,7 @@ jobs:
       - name: Check Out Source Code
         uses: actions/checkout@v4
       - name: Run SC-SAST & Debricked scan
-        uses: fortify/github-actionn@feat-1.3.0
+        uses: fortify/github-action@feat-1.3.0
         with:
           sast-scan: true
           debricked-sca-scan: true
