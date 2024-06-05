@@ -48,6 +48,31 @@ jobs:
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
           SSC_APPVERSION: EightBall:github
           EXTRA_EXPORT_OPTS: --fs "Quick View"
+  
+  sc-sast-scan:
+    if: true
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      # Check out source code
+      - name: Check Out Source Code
+        uses: actions/checkout@v4
+      - name: Run SC-SAST & Debricked scan
+        uses: fortify/github-action@feat-1.3.0
+        with:
+          sast-scan: true
+          debricked-sca-scan: false
+        env:
+          SSC_URL: ${{secrets.SSC_UAT_URL}}
+          SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
+          SSC_APPVERSION: EightBall:github
+          SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
+          SC_SAST_SENSOR_VERSION: 23.2.0
+          DO_EXPORT: true
+          JOB_SUMMARY_ACTION_EXTRA_OPTS: --fs "Security Auditor View"
           
   sc-sast-and-debricked-scan:
     if: true
