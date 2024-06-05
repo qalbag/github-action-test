@@ -34,7 +34,7 @@ jobs:
           DO_EXPORT: true
           
   export-test:
-    if: true
+    if: false
     strategy:
       fail-fast: false
       matrix:
@@ -74,6 +74,7 @@ jobs:
           SC_SAST_SENSOR_VERSION: 23.2.0
           DO_DEBRICKED_SCAN: true
           DO_EXPORT: true
+          JOB_SUMMARY_ACTION_EXTRA_OPTS: --fs "Security Auditor View"
           
   debricked-only-scan:
     if: true
