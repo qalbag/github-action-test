@@ -7,7 +7,7 @@ on:
     
 jobs:
   fod-sast-scan:
-    if: false
+    if: true
     strategy:
       fail-fast: false
       # Prevent running multiple FoD scans on same release simultaneously
@@ -34,7 +34,7 @@ jobs:
           DO_EXPORT: true
           
   export-test:
-    if: false
+    if: true
     strategy:
       fail-fast: false
       matrix:
@@ -50,7 +50,7 @@ jobs:
           EXTRA_EXPORT_OPTS: --fs "Quick View"
  
   sc-sast-scan-main:
-    if: true
+    if: false
     strategy:
       fail-fast: false
       matrix:
@@ -74,7 +74,7 @@ jobs:
           JOB_SUMMARY_ACTION_EXTRA_OPTS: --fs "Security Auditor View"
  
   sc-sast-scan:
-    if: false
+    if: true
     strategy:
       fail-fast: false
       matrix:
@@ -99,7 +99,7 @@ jobs:
           JOB_SUMMARY_ACTION_EXTRA_OPTS: --fs "Security Auditor View"
           
   sc-sast-and-debricked-scan:
-    if: false
+    if: true
     strategy:
       fail-fast: false
       matrix:
@@ -120,13 +120,13 @@ jobs:
           SSC_APPVERSION: GitHub:EightBall
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
           DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}
-          SC_SAST_SENSOR_VERSION: 23.2.0
+          SC_SAST_SENSOR_VERSION: 24.2.0
           DO_DEBRICKED_SCAN: true
           DO_EXPORT: true
           JOB_SUMMARY_ACTION_EXTRA_OPTS: --fs "Security Auditor View"
           
   debricked-only-scan:
-    if: false
+    if: true
     strategy:
       fail-fast: false
       matrix:
@@ -149,7 +149,7 @@ jobs:
           DO_WAIT: false
      
   setup-test:
-    if: false
+    if: true
     strategy:
       fail-fast: false
       matrix:
