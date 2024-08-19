@@ -46,7 +46,7 @@ jobs:
         env:
           SSC_URL: ${{secrets.SSC_UAT_URL}}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
-          SSC_APPVERSION: EightBall:github
+          SSC_APPVERSION: GitHub:EightBall
           EXTRA_EXPORT_OPTS: --fs "Quick View"
  
   sc-sast-scan-main:
@@ -67,7 +67,7 @@ jobs:
         env:
           SSC_URL: ${{secrets.SSC_UAT_URL}}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
-          SSC_APPVERSION: EightBall:github
+          SSC_APPVERSION: GitHub:EightBall
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
           SC_SAST_SENSOR_VERSION: 23.2.0
           DO_EXPORT: true
@@ -92,7 +92,7 @@ jobs:
         env:
           SSC_URL: ${{secrets.SSC_UAT_URL}}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
-          SSC_APPVERSION: EightBall:github
+          SSC_APPVERSION: GitHub:EightBall
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
           SC_SAST_SENSOR_VERSION: 23.2.0
           DO_EXPORT: true
@@ -117,7 +117,7 @@ jobs:
         env:
           SSC_URL: ${{secrets.SSC_UAT_URL}}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
-          SSC_APPVERSION: EightBall:github
+          SSC_APPVERSION: GitHub:EightBall
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
           DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}
           SC_SAST_SENSOR_VERSION: 23.2.0
@@ -144,7 +144,7 @@ jobs:
         env:
           SSC_URL: ${{secrets.SSC_UAT_URL}}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
-          SSC_APPVERSION: EightBall:github
+          SSC_APPVERSION: GitHub:EightBall
           DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}
           DO_WAIT: false
      
