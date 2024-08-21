@@ -24,7 +24,7 @@ jobs:
         with:
           sast-scan: true
         env:
-          FOD_URL: https://ams.fortify.com
+          FOD_URL: ${{ vars.FOD_URL }}
           FOD_TENANT: ${{secrets.OSS_FOD_TENANT}}
           FOD_USER: ${{secrets.OSS_FOD_USER}}
           FOD_PASSWORD: ${{secrets.OSS_FOD_PAT}}
@@ -44,7 +44,7 @@ jobs:
       - name: Run SC-SAST & Debricked scan
         uses: fortify/github-action/ssc-export@feat-1.3.0
         env:
-          SSC_URL: https://ssc.uattest.cyberresstage.com/
+          SSC_URL: ${{ vars.SSC_UAT_URL }}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
           SSC_APPVERSION: GitHub:EightBall
           EXTRA_EXPORT_OPTS: --fs "Quick View"
@@ -65,7 +65,7 @@ jobs:
         with:
           sast-scan: true
         env:
-          SSC_URL: https://ssc.uattest.cyberresstage.com/
+          SSC_URL: ${{ vars.SSC_UAT_URL }}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
           SSC_APPVERSION: GitHub:EightBall
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
@@ -90,7 +90,7 @@ jobs:
           sast-scan: true
           debricked-sca-scan: false
         env:
-          SSC_URL: https://ssc.uattest.cyberresstage.com/
+          SSC_URL: ${{ vars.SSC_UAT_URL }}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
           SSC_APPVERSION: GitHub:EightBall
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
@@ -115,7 +115,7 @@ jobs:
           sast-scan: true
           debricked-sca-scan: true
         env:
-          SSC_URL: https://ssc.uattest.cyberresstage.com/
+          SSC_URL: ${{ vars.SSC_UAT_URL }}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
           SSC_APPVERSION: GitHub:EightBall
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
@@ -142,7 +142,7 @@ jobs:
           sast-scan: false
           debricked-sca-scan: true
         env:
-          SSC_URL: https://ssc.uattest.cyberresstage.com/
+          SSC_URL: ${{ vars.SSC_UAT_URL }}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
           SSC_APPVERSION: GitHub:EightBall
           DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}
@@ -214,7 +214,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     env:
-      FOD_URL: https://ams.fortify.com
+      FOD_URL: ${{ vars.FOD_URL }}
       FOD_TENANT: ${{secrets.OSS_FOD_TENANT}}
       FOD_USER: ${{secrets.OSS_FOD_USER}}
       FOD_PASSWORD: ${{secrets.OSS_FOD_PAT}}
@@ -236,7 +236,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     env:
-      SSC_URL: https://ssc.uattest.cyberresstage.com/
+      SSC_URL: ${{ vars.SSC_UAT_URL }}
       SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
       SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
     steps:
@@ -263,7 +263,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     env:
-      SSC_URL: https://ssc.uattest.cyberresstage.com/
+      SSC_URL: ${{ vars.SSC_UAT_URL }}
       SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
     steps:
       - name: Setup fcli action-default
