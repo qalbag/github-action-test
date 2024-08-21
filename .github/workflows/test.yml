@@ -31,6 +31,7 @@ jobs:
           FOD_RELEASE: test2:eightball
           EXTRA_FOD_LOGIN_OPTS: --socket-timeout=600s
           EXTRA_FOD_SAST_SCAN_OPTS: --notes "These are notes from the GitHub Action"
+          RELEASE_SUMMARY_ACTION: release-summary
           DO_EXPORT: true
           
   export-test:
@@ -96,7 +97,8 @@ jobs:
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
           SC_SAST_SENSOR_VERSION: 23.2.0
           DO_EXPORT: true
-          JOB_SUMMARY_ACTION_EXTRA_OPTS: --fs "Security Auditor View"
+          APPVERSION_SUMMARY_ACTION: appversion-summary
+          APPVERSION_SUMMARY_ACTION_EXTRA_OPTS: --fs "Security Auditor View"
           
   sc-sast-and-debricked-scan:
     if: true
@@ -123,7 +125,8 @@ jobs:
           SC_SAST_SENSOR_VERSION: 24.2.0
           DO_DEBRICKED_SCAN: true
           DO_EXPORT: true
-          JOB_SUMMARY_ACTION_EXTRA_OPTS: --fs "Security Auditor View"
+          APPVERSION_SUMMARY_ACTION: appversion-summary
+          APPVERSION_SUMMARY_ACTION_EXTRA_OPTS: --fs "Security Auditor View"
           
   debricked-only-scan:
     if: true
