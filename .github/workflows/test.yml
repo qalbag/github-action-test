@@ -28,11 +28,14 @@ jobs:
           FOD_TENANT: ${{secrets.OSS_FOD_TENANT}}
           FOD_USER: ${{secrets.OSS_FOD_USER}}
           FOD_PASSWORD: ${{secrets.OSS_FOD_PAT}}
-          FOD_RELEASE: test2:eightball
           EXTRA_FOD_LOGIN_OPTS: --socket-timeout=600s
           EXTRA_FOD_SAST_SCAN_OPTS: --notes "These are notes from the GitHub Action"
+          DO_SETUP: true
+          DO_POLICY_CHECK: true
           DO_JOB_SUMMARY: true
+          DO_PR_COMMENT: true
           DO_EXPORT: true
+          SETUP_EXTRA_ARGS: --sdlc-status QA
           
   export-test:
     if: true
@@ -94,11 +97,13 @@ jobs:
         env:
           SSC_URL: ${{ vars.SSC_UAT_URL }}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
-          SSC_APPVERSION: GitHub:EightBall
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
           SC_SAST_SENSOR_VERSION: 23.2.0
-          DO_EXPORT: true
+          DO_SETUP: true
+          DO_POLICY_CHECK: true
           DO_JOB_SUMMARY: true
+          DO_PR_COMMENT: true
+          DO_EXPORT: true
           JOB_SUMMARY_EXTRA_OPTS: --fs "Security Auditor View"
           
   sc-sast-and-debricked-scan:
@@ -120,13 +125,14 @@ jobs:
         env:
           SSC_URL: ${{ vars.SSC_UAT_URL }}
           SSC_TOKEN: ${{secrets.SSC_UAT_TOKEN}}
-          SSC_APPVERSION: GitHub:EightBall
           SC_SAST_TOKEN: ${{secrets.SC_SAST_UAT_TOKEN}}
           DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}
           SC_SAST_SENSOR_VERSION: 24.2.0
-          DO_DEBRICKED_SCAN: true
-          DO_EXPORT: true
+          DO_SETUP: true
+          DO_POLICY_CHECK: true
           DO_JOB_SUMMARY: true
+          DO_PR_COMMENT: true
+          DO_EXPORT: true
           JOB_SUMMARY_EXTRA_OPTS: --fs "Security Auditor View"
           
   debricked-only-scan:
