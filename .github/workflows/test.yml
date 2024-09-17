@@ -35,7 +35,7 @@ jobs:
           DO_JOB_SUMMARY: true
           DO_PR_COMMENT: true
           DO_EXPORT: true
-          SETUP_EXTRA_OPTS: --sdlc-status QA --setup sast
+          SETUP_EXTRA_OPTS: --sdlc-status QA --scan-types sast
           
   export-test:
     if: true
@@ -105,6 +105,7 @@ jobs:
           DO_JOB_SUMMARY: true
           DO_PR_COMMENT: true
           DO_EXPORT: true
+          SETUP_EXTRA_OPTS: --issue-template "Prioritized High Risk Issue Template"
           JOB_SUMMARY_EXTRA_OPTS: --fs "Security Auditor View"
           
   sc-sast-and-debricked-scan:
