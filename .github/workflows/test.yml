@@ -36,6 +36,8 @@ jobs:
           DO_PR_COMMENT: true
           DO_EXPORT: true
           SETUP_EXTRA_OPTS: --sdlc-status QA --scan-types sast
+          POLICY_CHECK_ACTION: ./check-policy.yaml
+          POLICY_CHECK_EXTRA_OPTS: --on-unsigned=warn --pass true
           
   export-test:
     if: true
@@ -107,6 +109,8 @@ jobs:
           DO_EXPORT: true
           SETUP_EXTRA_OPTS: --issue-template "Prioritized High Risk Issue Template"
           JOB_SUMMARY_EXTRA_OPTS: --fs "Security Auditor View"
+          POLICY_CHECK_ACTION: ./check-policy.yaml
+          POLICY_CHECK_EXTRA_OPTS: --on-unsigned=warn --pass true
           
   sc-sast-and-debricked-scan:
     if: true
@@ -136,6 +140,8 @@ jobs:
           DO_PR_COMMENT: true
           DO_EXPORT: true
           JOB_SUMMARY_EXTRA_OPTS: --fs "Security Auditor View"
+          POLICY_CHECK_ACTION: ./check-policy.yaml
+          POLICY_CHECK_EXTRA_OPTS: --on-unsigned=warn --pass true
           
   debricked-only-scan:
     if: true

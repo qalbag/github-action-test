@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://fortify.github.io/fcli/schemas/action/fcli-action-schema-dev.json
+
+author: Custom
+usage:
+  header: (SAMPLE) Check security policy, pass or fail based on input 
+  description: |
+    This sample action passes or fails the policy check based on input parameter.
+
+defaults:
+  requestTarget: ssc
+  
+parameters:
+  - name: appversion
+    cliAliases: av
+    description: "Required application version id or <appName>:<versionName>"
+    type: appversion_single
+  - name: pass
+    description: Whetehr to pass the security policy or not
+    type: boolean
+    defaultValue: false
+  
+steps:
+  - check:
+    - displayName: Pass based on --pass parameter
+      passIf:      ${parameters.pass}
