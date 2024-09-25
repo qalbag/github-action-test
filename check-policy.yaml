@@ -12,8 +12,14 @@ defaults:
 parameters:
   - name: appversion
     cliAliases: av
-    description: "Required application version id or <appName>:<versionName>"
-    type: appversion_single
+    description: "Application version id or <appName>:<versionName>"
+    type: string
+    required: false
+  - name: release
+    cliAliases: rel
+    description: "Application release id or <appName>:<releaseName>"
+    type: string
+    required: false
   - name: pass
     description: Whetehr to pass the security policy or not
     type: boolean
