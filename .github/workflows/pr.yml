@@ -1,4 +1,4 @@
-name: Test Fortify GitHub Action
+name: Test PR decoration
 
 on: 
   workflow_dispatch:
