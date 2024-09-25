@@ -14,7 +14,7 @@ jobs:
       - name: Check Out Source Code
         uses: actions/checkout@v4
       - name: Run FoD SAST scan
-        uses: fortify/github-action@feat-1.3.0
+        uses: fortify/github-action@v1
         with:
           sast-scan: true
         env:
@@ -39,7 +39,7 @@ jobs:
       - name: Check Out Source Code
         uses: actions/checkout@v4
       - name: Run SC-SAST & Debricked scan
-        uses: fortify/github-action@feat-1.3.0
+        uses: fortify/github-action@v1
         with:
           sast-scan: true
           debricked-sca-scan: true
