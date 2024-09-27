@@ -20,7 +20,7 @@ jobs:
       - name: Check Out Source Code
         uses: actions/checkout@v4
       - name: Run FoD SAST scan
-        uses: fortify/github-action@v1
+        uses: fortify/github-action@main
         with:
           sast-scan: true
         env:
