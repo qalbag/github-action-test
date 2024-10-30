@@ -8,7 +8,7 @@ jobs:
   x:
     runs-on: ubuntu-latest
     env:
-        SETUP_EXTRA_OPTS: --a --b
+        SETUP_EXTRA_OPTS: --sdlc-status QA --scan-types sast
         DO_DEBRICKED_SCAN: true
     steps:
       - run: |
@@ -20,7 +20,7 @@ jobs:
   y:
     runs-on: ubuntu-latest
     env:
-      SETUP_EXTRA_OPTS: --a --b
+      SETUP_EXTRA_OPTS: --sdlc-status QA --scan-types sast
       DO_DEBRICKED_SCAN: true
     steps:
               - uses: fortify/github-action/internal/set-fod-var-defaults@main
