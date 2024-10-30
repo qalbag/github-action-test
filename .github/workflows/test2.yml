@@ -36,3 +36,28 @@ jobs:
                               - run: |
                                   echo "Hi"
                                 shell: bash  
+  fod-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Source Code
+        uses: actions/checkout@v4
+      - name: Run FoD SAST scan
+        uses: fortify/github-action@main
+        with:
+          sast-scan: true
+          debricked-sca-scan: true
+        env:
+                                          FOD_URL: ${{ vars.FOD_URL }}
+                                          FOD_TENANT: ${{secrets.OSS_FOD_TENANT}}
+                                          FOD_USER: ${{secrets.OSS_FOD_USER}}
+                                          FOD_PASSWORD: ${{secrets.OSS_FOD_PAT}}
+                                          FOD_LOGIN_EXTRA_OPTS: --socket-timeout=600s
+                                          FOD_SAST_SCAN_EXTRA_OPTS: --notes "These are notes from the GitHub Action"
+                                          DO_SETUP: true
+                                          DO_POLICY_CHECK: true
+                                          DO_JOB_SUMMARY: true
+                                          DO_PR_COMMENT: true
+                                          DO_EXPORT: true
+                                          SETUP_EXTRA_OPTS: --sdlc-status QA --scan-types sast
+                                          POLICY_CHECK_ACTION: ./check-policy.yaml
+                                          POLICY_CHECK_EXTRA_OPTS: --on-unsigned=warn --pass true
