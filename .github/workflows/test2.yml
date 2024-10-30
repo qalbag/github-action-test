@@ -1,0 +1,38 @@
+name: Test Fortify GitHub Action
+
+on: 
+  workflow_dispatch:
+  push:
+    
+jobs:
+  x:
+    runs-on: ubuntu-latest
+    env:
+        SETUP_EXTRA_OPTS: --a --b
+        DO_DEBRICKED_SCAN: true
+    steps:
+      - run: |
+          echo "SETUP_EXTRA_OPTS=--oss $SETUP_EXTRA_OPTS" >> $GITHUB_ENV
+        shell: bash
+      - run: |
+          echo "Hi"
+        shell: bash
+  y:
+    runs-on: ubuntu-latest
+    env:
+      SETUP_EXTRA_OPTS: --a --b
+      DO_DEBRICKED_SCAN: true
+    steps:
+              - uses: fortify/github-action/internal/set-fod-var-defaults@main
+              - run: |
+                  echo "Hi"
+                shell: bash  
+  z:
+    runs-on: ubuntu-latest
+    env:
+      DO_DEBRICKED_SCAN: true
+    steps:
+                              - uses: fortify/github-action/internal/set-fod-var-defaults@main
+                              - run: |
+                                  echo "Hi"
+                                shell: bash  
