@@ -61,3 +61,4 @@ jobs:
                                           SETUP_EXTRA_OPTS: --sdlc-status QA --scan-types sast
                                           POLICY_CHECK_ACTION: ./check-policy.yaml
                                           POLICY_CHECK_EXTRA_OPTS: --on-unsigned=warn --pass true
+                                          PACKAGE_EXTRA_OPTS: -a -b
