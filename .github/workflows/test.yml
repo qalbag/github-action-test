@@ -34,6 +34,7 @@ jobs:
           DO_JOB_SUMMARY: true
           DO_PR_COMMENT: true
           DO_EXPORT: true
+          SC_CLIENT_VERSION: 23.1
           SETUP_EXTRA_OPTS: --sdlc-status QA --scan-types sast
           POLICY_CHECK_ACTION: ./check-policy.yaml
           POLICY_CHECK_EXTRA_OPTS: --on-unsigned=warn --pass true
