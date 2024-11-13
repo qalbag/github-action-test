@@ -1,0 +1,30 @@
+name: Test Fortify GitHub Action
+
+on: 
+  workflow_dispatch:
+  push:
+    branches: [master]
+    
+jobs:
+  setup-test:
+    if: true
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:    
+      - name: Setup SC Client
+        uses: fortify/github-action/setup@feat-version-override
+        with:
+          sc-client: action-default
+      - run: scancentral -version
+      - name: Setup SC Client
+        uses: fortify/github-action/setup@feat-version-override
+        with:
+          sc-client: action-default
+        env:
+          SC_CLIENT_VERSION: 23.2
+      - run: scancentral -version
+  
+  
