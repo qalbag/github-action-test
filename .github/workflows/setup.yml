@@ -1,4 +1,4 @@
-name: Test Fortify GitHub Action
+name: setup.yml
 
 on: 
   workflow_dispatch:
