@@ -1,4 +1,4 @@
-name: test.yml
+name: package.yml
 
 on: 
   workflow_dispatch:
